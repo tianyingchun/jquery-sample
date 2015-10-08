@@ -1,6 +1,6 @@
-kissy-sample
+jquery-sample
 ==========
-the samle solution based on kissy components (CMD) for pc platform
+the samle solution based on jquery components (CMD) for pc platform
 ----------
-- The demo project solution for pc platform based on kissy ui libraray.
+- The demo project solution for pc platform based on jquery opensource ui libraray.
 
