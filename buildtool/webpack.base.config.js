@@ -9,6 +9,7 @@ module.exports = function baseConfig() {
     entry: {
       // nothing.
     },
+    // target: 'node',
     module: {
       loaders: [
         // Extract css files
@@ -26,6 +27,11 @@ module.exports = function baseConfig() {
     plugins: [
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.optimize.DedupePlugin(), //Note. don't know if there are some problem maybe.
+      new webpack.ProvidePlugin({
+        $: "jquery",
+        jQuery: "jquery",
+        "window.jQuery": "jquery"
+      }),
       new ExtractTextPlugin("${projectName}/[name]/bundle.css${version}", { allChunks: true })
     ],
     output: {

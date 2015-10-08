@@ -26,5 +26,11 @@ module.exports = function () {
     })
   ]);
 
+  // loaders for development
+  config.module.loaders.push({
+    test: /\.js$/,
+    loaders: ['babel-loader'],
+    exclude: /node_modules/
+  });
   return config;
 };

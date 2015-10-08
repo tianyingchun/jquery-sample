@@ -4,3 +4,6 @@
 [submodule "shared/jquery"]
 	path = shared/jquery
 	url = https://github.com/tianyingchun/jquery.git
+[submodule "shared/less"]
+	path = shared/less
+	url = https://github.com/tianyingchun/less.git

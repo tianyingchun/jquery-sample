@@ -13,7 +13,6 @@ var logger = debug('server:serverRenderParams');
  * @param  {Object} env node process.env.NODE_ENV
  */
 var getRenderParams = function (req, env) {
-  var routes;
   var jsBundles = [];
   var cssBundles = [];
   // The sub project, the current load project.
@@ -84,25 +83,14 @@ var getRenderParams = function (req, env) {
         version: version
       })));
     });
-
-    var routePath;
-    try {
-      routePath = path.join(process.cwd(), fundProject.routes);
-      // the routes of current sub project(project).
-      routes = require(routePath);
-    } catch (e) {
-      console.log('require routes components has errors: ', routePath, e);
-      routes = null;
-    }
   } else {
     console.warn('=========can not find any matched routes!!!=========');
   }
 
   var result = {
     project: fundProject,
-    routes,
-    jsBundles,
-    cssBundles
+    jsBundles: jsBundles,
+    cssBundles: cssBundles
   };
 
   // logger('result: ', result);

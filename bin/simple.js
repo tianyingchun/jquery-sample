@@ -17,22 +17,22 @@ app.use("/shared", cors(), express.static(path.join(__dirname, '../shared')));
 app.use("/", function(req, res) {
     // Resolve current server rendering params.
   var configParams = getRenderParams(req, NODE_ENV);
-  var project = configParams.project;
-  var routes = configParams.routes;
-  var jsBundles = configParams.jsBundles;
-  var cssBundle = configParams.cssBundle;
 
-  if (!routes || !project)  {
+  var project = configParams.project;
+  var jsBundles = configParams.jsBundles;
+  var cssBundles = configParams.cssBundles;
+
+  if (!project)  {
     console.log('router match failed in build.config.js, 404 not found!');
     // should give 404.
     res.status(404).send('Not found');
     return;
   }
-  let stylesHtml = cssBundles.map(function (cssLink) {
+  var stylesHtml = cssBundles.map(function (cssLink) {
     return ('<link name="'+cssLink.name+'" rel="stylesheet" type="text/css" href="'+cssLink.href+'">');
   }).join('');
 
-  let scriptsHtml = jsBundles.map(function (jsLink) {
+  var scriptsHtml = jsBundles.map(function (jsLink) {
     return ('<script src="' + jsLink + '"></script>');
   }).join('');
 

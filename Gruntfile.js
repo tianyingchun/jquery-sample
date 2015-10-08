@@ -7,7 +7,7 @@ module.exports = function (grunt) {
       options: {
         configFile: '.eslintrc'
       },
-      react: [
+      jquery: [
         './projects/**/*{.js}'
       ]
     },
