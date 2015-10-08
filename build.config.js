@@ -44,6 +44,11 @@ module.exports = {
       }
     },
     testp2: {
+       // the project meta config.
+      _metaInfo: {
+        version: ''
+      },
+
       home: {
         // entry point, must be string.
         entry: './projects/testp2/home/index.js'

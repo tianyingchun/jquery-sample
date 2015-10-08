@@ -7,10 +7,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = function baseConfig() {
   return {
     entry: {
-      // for convenience, we should always define libaray as react-kits entry.
-      reactlib: ['react', 'react-dom', 'react-router', 'redux', 'react-redux', 'redux-logger', 'wurl', 'redux-simple-promise', 'axios'],
-      // customized module entry definitions.
-      common: ['rc-menu', 'velocity-animate']
+      // nothing.
     },
     module: {
       loaders: [
@@ -29,13 +26,7 @@ module.exports = function baseConfig() {
     plugins: [
       new webpack.optimize.OccurenceOrderPlugin(),
       new webpack.optimize.DedupePlugin(), //Note. don't know if there are some problem maybe.
-      new ExtractTextPlugin("${projectName}/[name]/bundle.css${version}", { allChunks: true }),
-      new webpack.optimize.CommonsChunkPlugin({
-        // compile react vendors to reactkits.js
-        names:['common','reactlib'],
-        filename: '${projectName}/[name].js',
-        minChunks: Infinity
-      })
+      new ExtractTextPlugin("${projectName}/[name]/bundle.css${version}", { allChunks: true })
     ],
     output: {
       path: path.join(__dirname, 'public'),
@@ -44,6 +35,12 @@ module.exports = function baseConfig() {
       filename: '${projectName}/[name]/bundle.js${version}'
       // publicPath: 'http://cdn.xx.com/public/' will set dynamicly via buildtool.
     },
+    externals: {
+      // require("jquery") is external and available
+      // on the global var jQuery
+      "jquery": "jQuery"
+    },
+
     stats: {
       // Configure the console output, https://github.com/webpack/grunt-webpack
       // colors: false,

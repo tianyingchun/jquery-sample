@@ -16,6 +16,7 @@
     "exec-time": "0.0.3",
     "express": "^4.13.3",
     "html-minifier": "^0.7.2",
+    "jquery": "^1.11.3",
     "serve-favicon": "^2.3.0",
     "wurl": "^2.0.1"
   },

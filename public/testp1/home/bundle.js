@@ -1,0 +1,1 @@
+!function(t){function n(o){if(r[o])return r[o].exports;var e=r[o]={exports:{},id:o,loaded:!1};return t[o].call(e.exports,e,e.exports,n),e.loaded=!0,e.exports}var r={};return n.m=t,n.c=r,n.p="http://cdn.xx.com/public/",n(0)}([function(t,n,r){t.exports=r(4)},,,,function(t,n){t.exports={run:function(){}}}]);

@@ -30,7 +30,7 @@ module.exports = function () {
   // loaders for development
   config.module.loaders.push({
     test: /\.js$/,
-    loaders: ['react-hot', 'babel-loader'],
+    loaders: ['react-hot'],
     exclude: /node_modules/
   });
   return config;
