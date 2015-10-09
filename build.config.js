@@ -8,8 +8,8 @@ module.exports = {
 
     devServer: {
       host: 'localhost',
-      port: 3000,
-      publicPath: 'http://localhost:3000/public/'
+      port: 3001,
+      publicPath: 'http://localhost:3001/public/'
     },
     built: {
       // where the built files should be placed?
@@ -22,7 +22,7 @@ module.exports = {
         context: 'projects/${projectName}/stylesheets',
         name: '${projectName}/[path][name].[ext]'
       },
-      dev: 'http://localhost:4001/public/',
+      dev: 'http://localhost:3001/public/',
       prod: 'http://cdn.xx.com/public/'
     }
   },
