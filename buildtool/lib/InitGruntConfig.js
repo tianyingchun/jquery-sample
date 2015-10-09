@@ -72,41 +72,53 @@ var getWebpackConfig = function (grunt, mode, projects) {
 
   Object.keys(projects).forEach(function (projectName) {
     var webpack = null;
-    var project = projects[projectName];
+    var project = _.clone(projects[projectName]);
 
     // get project meta config.
     var projectMetaInfo = project._metaInfo;
     delete project._metaInfo;
 
-    switch (mode) {
-      case 'devBuild':
-        webpack = webpackDevConfig();
-        webpack.output.path = path.join(default_config.built.baseDir, 'debug');
-        webpack.output.publicPath = default_config.assets.dev;
-        break;
-      case 'prodBuild':
-        webpack = webpackProdConfig();
-        webpack.output.path = default_config.built.baseDir;
-        webpack.output.publicPath = default_config.assets.prod;
-        break;
-    }
+    // create build task config 'project.subProject'.
+    Object.keys(project).forEach(function (subProjectName) {
 
-    // reset webpack configuration.
-    resetWebpackConfig(grunt, webpack, projectName, projectMetaInfo);
+      // current task.
+      var subProject = project[subProjectName];
+      if (subProject._metaInfo) {
+        projectMetaInfo = subProject._metaInfo;
+        delete subProject._metaInfo;
+      }
+      switch (mode) {
+        case 'devBuild':
+          webpack = webpackDevConfig();
+          webpack.output.path = path.join(default_config.built.baseDir, 'debug');
+          webpack.output.publicPath = default_config.assets.dev;
+          break;
 
-    // create build task config 'project.subModule'
-    Object.keys(project).forEach(function (subModuleName) {
+        case 'prodBuild':
+          webpack = webpackProdConfig();
+          webpack.output.path = default_config.built.baseDir;
+          webpack.output.publicPath = default_config.assets.prod;
+          break;
+      }
 
-      // current subModule.
-      var subModule = project[subModuleName];
       // override webpack.entry
-      webpack.entry[subModuleName] = [subModule.entry]
+      webpack.entry[subProjectName] = [subProject.entry];
+
+      var taks_target_name = projectName + '.' + subProjectName;
+
+      console.log('`' + taks_target_name + '` metaInfo: ', projectMetaInfo);
+
+      // reset webpack configuration.
+      resetWebpackConfig(grunt, webpack, projectName, projectMetaInfo);
+
+      grunt.log.ok(taks_target_name + ' entries: ', Object.keys(webpack.entry));
+      result[taks_target_name] = webpack;
+
+      grunt.log.ok('webpack task target name: ', taks_target_name);
+      grunt.log.writeln('\n---------------------------------------------------');
 
     });
-    grunt.log.ok(projectName + ' entries: ', Object.keys(webpack.entry));
-    result[projectName] = webpack;
-    grunt.log.ok('webpack task target name: ', projectName);
-    grunt.log.writeln('\n---------------------------------------------------');
+
   });
 
   return result;
@@ -162,16 +174,29 @@ var getHotWebpackConfig = function (grunt, mode, projects) {
  * @param  {Object} grunt
  * @param  {String} mode  'devServer','devBuild','prodBuild'
  * @param  {String} projectName    optional
+ * @param  {String} subProjectName optional
  * @Param  {Bool} isDevServer  the value indicates if we are preparing the dev server config.
  * @return {void}
  */
-var prepareWebpackConfig = function (grunt, mode, projectName, isDevServer) {
+var prepareWebpackConfig = function (grunt, mode, projectName, subProjectName, isDevServer) {
 
   var buildProjects = projectInfo.projects || {};
+
   // specificed project name.
   if (projectName) {
     buildProjects = _.pick(buildProjects, [projectName]);
   }
+
+  // specificed subProject name.
+  if (subProjectName) {
+    var project_path = projectName + '.' + subProjectName;
+    if (!_.result(buildProjects, project_path)) {
+      grunt.fail.fatal('The project `' + project_path + '` can not be found build.config.js');
+      return;
+    }
+    buildProjects[projectName] = _.pick(buildProjects[projectName], [subProjectName]);
+  }
+
   if (isDevServer) {
     // only for 'devServer', build all sub-project(sub-modules) one time.
     return getHotWebpackConfig(grunt, mode, buildProjects);
@@ -194,9 +219,14 @@ var promptTaskCallback = function (grunt, promptResult, mode) {
     }
   } else {
 
-    grunt.config.set('webpack', prepareWebpackConfig(grunt, mode, buildProjectName));
+    // check if we are now build all sub-projects.
+    var buildSubProject = promptResult['build.specific.subproject'];
+    if (buildSubProject === 'build_all_sub_projects') {
+      buildSubProject = '';
+    }
+    grunt.config.set('webpack', prepareWebpackConfig(grunt, mode, buildProjectName, buildSubProject));
 
-    grunt.log.ok('building: ', 'project[' + buildProjectName + ']');
+    grunt.log.ok('building: ', 'project[' + buildProjectName + ']' + '.' + 'subProject[' + buildSubProject + ']');
     // run `webpack` task
     grunt.task.run(['webpack']);
   }
@@ -224,6 +254,16 @@ var initPromptConfig = function (grunt) {
     });
   });
 
+  // sub project chioces.
+  var subProjectChoices = [];
+
+  subProjectChoices.push({
+    name: 'build_all_sub_projects',
+    value: 'build_all_sub_projects',
+    checked: true
+  });
+
+
   // prompt questions.
   var questions = [];
 
@@ -233,6 +273,35 @@ var initPromptConfig = function (grunt) {
     message: 'Which project would you like to build ?',
     default: 'build_all_projects',
     choices: projectChoices
+  });
+
+  questions.push({
+    config: 'build.specific.subproject',
+    type: 'list',
+    message: 'What specific sub project would you like to build ?',
+    choices: function () {
+      return subProjectChoices;
+    },
+    when: function (answers) {
+      var answer = answers['list.all.projects'];
+      var buildAllProject = (answer === 'build_all_projects');
+
+      // if we need to build specificed sub project, need to return true.
+      if (!buildAllProject) {
+        var projectInfo = projects[answer];
+
+        // build specific sub project.
+        Object.keys(projectInfo).forEach(function (subProjectName) {
+          if (subProjectName !== '_metaInfo') {
+            subProjectChoices.push({
+              name: subProjectName,
+              value: subProjectName
+            });
+          }
+        });
+      }
+      return !buildAllProject;
+    }
   });
 
   questions.push({
@@ -280,7 +349,7 @@ var initWebpackDevServerConfig = function (grunt, projectName) {
     return;
   }
   // get prepared hotserver webpack config.
-  var devHotConfig = prepareWebpackConfig(grunt, 'devServer', projectName, true);
+  var devHotConfig = prepareWebpackConfig(grunt, 'devServer', projectName, '', true);
 
   var config = {
     options: {
