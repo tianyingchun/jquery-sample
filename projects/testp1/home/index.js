@@ -4,7 +4,7 @@ var draggable = require('../../../shared/jquery/components/draggable');
 var dropdown =  require('../../../shared/jquery/components/dropdown');
 $(function () {
   // binding plugin a, b , c, d
-  alert('initialize....'+slide.getString());
+  console.log('initialize....'+slide.getString());
 
   // run api.
   var $test = $('<div>dragging testing...</div>').appendTo(document.body);

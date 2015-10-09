@@ -19,7 +19,7 @@ module.exports = function (grunt) {
           ignore: ['node_modules/**'],
           env: {
             PORT: '4001',
-            // for development, isomorphic server render react
+            // for development, isomorphic server rendering
             NODE_ENV: '',
             DEBUG_COLORS: true
           },
@@ -32,6 +32,11 @@ module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt);
 
   // Load customized webpack build infrastructure.
+  // useage:
+  //  grunt {hot:projectName}
+  //  grunt dev-build
+  //  grunt prod-build
+  // ---------------------------------------------//
   require('./buildtool')(grunt);
 
   grunt.registerTask('server', ['nodemon:server']);
