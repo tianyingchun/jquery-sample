@@ -1,0 +1,16 @@
+body {
+  color: red;
+}
+body .testp1 .topbar {
+  -webkit-transform: scale(0.83333333) rotate(0deg);
+      -ms-transform: scale(0.83333333) rotate(0deg);
+          transform: scale(0.83333333) rotate(0deg);
+}
+body .banner {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAOBAMAAADDIxFwAAAAA3NCSVQICAjb4U/gAAAAG1BMVEX////+9fL74dn3w7Pwh2fvfVrtc07saUH///9ygFjCAAAACXRSTlP//////////wBTT3gSAAAACXBIWXMAAArrAAAK6wGCiw1aAAAAFnRFWHRDcmVhdGlvbiBUaW1lADA2LzA5LzE1aXRYHgAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAABPSURBVAiZY1AtR4AghnAkXilDOQMDOxCXMxSwA4lyMAPIRPCA8gwMDHC58nJkHgSWQ/kM5VAeqg0otpeXWXTAAUN5UgcSr0QDmeeIxOkAAB3LQfRV/lZ5AAAAAElFTkSuQmCC) no-repeat 0 0;
+}
+body .slideshow {
+  background: url(http://localhost:3001/public/testp1/assets/mascot.png) no-repeat 0 0;
+}
+
+/*# sourceMappingURL=bundle.css.map*/

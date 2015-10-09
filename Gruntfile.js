@@ -8,7 +8,7 @@ module.exports = function (grunt) {
         configFile: '.eslintrc'
       },
       jquery: [
-        './projects/**/*{.js}'
+        './projects/**/*.js'
       ]
     },
     nodemon: {

@@ -9,7 +9,6 @@ module.exports = function baseConfig() {
     entry: {
       // nothing.
     },
-    // target: 'node',
     module: {
       loaders: [
         // Extract css files
