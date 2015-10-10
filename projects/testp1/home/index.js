@@ -35,12 +35,11 @@ $(function () {
   $.ui.run('ui.dropdown');
 
 
-  var dropdown = $($dropdown.filter('.dropdown')[0]).data('ui.dropdown');
-  dropdown.setOptions({
-    onSelect: function (evt, data) {
-      console.log(data);
-    }
-  });
+  // var dropdown = $($dropdown.filter('.dropdown')[0]).data('ui.dropdown');
+  // dropdown.setOptions({
+  //   onSelect: function (evt, data) {
+  //     console.log(data);
+  //   }
+  // });
 
-  console.log(window.dropdown = $(dropdown).data('ui.dropdown'));
 });
