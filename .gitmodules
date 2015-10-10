@@ -1,6 +1,3 @@
-[submodule "shared/kissy"]
-	path = shared/kissy
-	url = https://github.com/tianyingchun/kissy.git
 [submodule "shared/jquery"]
 	path = shared/jquery
 	url = https://github.com/tianyingchun/jquery.git

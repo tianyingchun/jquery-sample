@@ -44,13 +44,13 @@ module.exports = {
         // entry point, must be string.
         entry: './projects/testp1/home/index.js',
         jsBundles: ['http://localhost:4001/public/vendors/jquery/jquery.js${version}', 'testp1/home/bundle.js${version}'],
-        cssBundles: ['http://localhost:4001/public/common.css', 'testp1/home/bundle.css${version}']
+        cssBundles: ['http://localhost:4001/shared/less/public/themes/tongcheng-pc/common.css', 'testp1/home/bundle.css${version}']
       },
       catalog: {
         match: /^\/testp1\/catalog(\/)?/,
         entry: './projects/testp1/catalog/index.js',
         jsBundles: ['http://localhost:4001/public/vendors/jquery/jquery.js${version}', 'testp1/catalog/bundle.js${version}'],
-        cssBundles: ['http://localhost:4001/public/common.css', 'testp1/catalog/bundle.css${version}']
+        cssBundles: ['http://localhost:4001/shared/less/public/themes/tongcheng-pc/common.css', 'testp1/catalog/bundle.css${version}']
       }
     },
     testp2: {
@@ -63,14 +63,14 @@ module.exports = {
         match: /^\/testp2\/home(\/)?/,
         entry: './projects/testp2/home/index.js',
         jsBundles: ['http://localhost:4001/public/vendors/jquery/jquery.js${version}', 'testp2/home/bundle.js${version}'],
-        cssBundles: ['http://localhost:4001/public/common.css', 'testp2/home/bundle.css${version}']
+        cssBundles: ['http://localhost:4001/public/shared/less/themes/tongcheng-pc/common.css', 'testp2/home/bundle.css${version}']
       },
       catalog: {
         // entry point, must be string.
         match: /^\/testp2\/catalog(\/)?/,
         entry: './projects/testp2/catalog/index.js',
         jsBundles: ['http://localhost:4001/public/vendors/jquery/jquery.js${version}', 'testp2/catalog/bundle.js${version}'],
-        cssBundles: ['http://localhost:4001/public/common.css', 'testp2/catalog/bundle.css${version}']
+        cssBundles: ['http://localhost:4001/public/shared/less/themes/tongcheng-pc/common.css', 'testp2/catalog/bundle.css${version}']
       }
     }
   }

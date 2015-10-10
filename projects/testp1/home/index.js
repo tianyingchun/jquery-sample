@@ -9,7 +9,7 @@ $(function () {
   var $dropdown = $(
     '<div class="dropdown" data-dropdown=\'{"menuAlwaysOpen": true,"my_position":"left+10 top+10"}\'>' +
     '  <div class="launcher-container">' +
-    '    <button class="dropdown-toggle">Select another</button>' +
+    '    <button class="btn btn-primary dropdown-toggle">Select another</button>' +
     '  </div>' +
     '  <ul class="dropdown-content" class="list-unstyled">' +
     '    <li data-value="opt_2.1"><a href="javascript:void(0);">Option-2.1</a></li>' +
@@ -19,9 +19,9 @@ $(function () {
     '  </ul>' +
     '</div>' +
     '<hr />' +
-    '<div class="dropdown" data-dropdown=\'{"launchOnMouseEnter": true,"my_position":"left+10 top+10"}\'>' +
+    '<div class="dropdown" data-dropdown=\'{"menuAlwaysOpen": true, "launchOnMouseEnter": true,"my_position":"left+10 top+10"}\'>' +
     '  <div class="launcher-container">' +
-    '    <button class="dropdown-toggle">Select another</button>' +
+    '    <button class="btn btn-primary dropdown-toggle">Select another</button>' +
     '  </div>' +
     '  <ul class="dropdown-content" class="list-unstyled">' +
     '    <li data-value="opt_2.1"><a href="javascript:void(0);">Option-2.1</a></li>' +
