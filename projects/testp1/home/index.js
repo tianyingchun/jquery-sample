@@ -7,7 +7,7 @@ var Dropdown = require('../../../shared/jquery/components/dropdown');
 $(function () {
   // run module2.
   var $dropdown = $(
-    '<div class="dropdown" data-dropdown=\'{"launchOnMouseEnter": true,"my_position":"left+10 top+10"}\'>' +
+    '<div class="dropdown" data-dropdown=\'{"menuAlwaysOpen": true,"my_position":"left+10 top+10"}\'>' +
     '  <div class="launcher-container">' +
     '    <button class="dropdown-toggle">Select another</button>' +
     '  </div>' +
@@ -33,6 +33,14 @@ $(function () {
   ).appendTo(document.body);
 
   $.ui.run('ui.dropdown');
-  var dropdown = $dropdown.find('.dropdown');
-  console.log(dropdown.data('ui.dropdown'));
+
+
+  var dropdown = $($dropdown.filter('.dropdown')[0]).data('ui.dropdown');
+  dropdown.setOptions({
+    onSelect: function (evt, data) {
+      console.log(data);
+    }
+  });
+
+  console.log(window.dropdown = $(dropdown).data('ui.dropdown'));
 });
