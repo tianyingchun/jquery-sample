@@ -2,7 +2,7 @@ require('../stylesheets/testp1.less');
 
 var core = require('../../../shared/jquery/components/core');
 var Dropdown = require('../../../shared/jquery/components/dropdown');
-// var dialog = require('../../../shared/jquery/components/dialog');
+var dialog = require('../../../shared/jquery/components/dialog');
 
 $(function () {
   // run module2.
@@ -31,15 +31,46 @@ $(function () {
     '  </ul>' +
     '</div>'
   ).appendTo(document.body);
+  $(
+    '<p>sssss</p><p>sssss</p><p>sssss</p><p>sssss</p>'+
+    '<p>sssss</p><p>sssss</p><p>sssss</p><p>sssss</p>'+
+    '<p>sssss</p><p>sssss</p><p>sssss</p><p>sssss</p>'+
+    '<p>sssss</p><p>sssss</p><p>sssss</p><p>sssss</p>'+
+    '<p>sssss</p><p>sssss</p><p>sssss</p><p>sssss</p>'+
+    '<p>sssss</p><p>sssss</p><p>sssss</p><p>sssss</p>'+
+    '<p>sssss</p><p>sssss</p><p>sssss</p><p>sssss</p>'+
+    '<p>sssss</p><p>sssss</p><p>sssss</p><p>sssss</p>'+
+    '<p>sssss</p><p>sssss</p><p>sssss</p><p>sssss</p>'+
+    '<p>sssss</p><p>sssss</p><p>sssss</p><p>sssss</p>'
+    ).appendTo(document.body);
+
+  var $popup2 = $('<div id="popup2" class="popup">'+
+    '   <div class="popup-dialog">'+
+    '       <div class="popup-hd">'+
+    '           <span class="close"><i>X</i></span>'+
+    '       </div>'+
+    '       <div class="popup-bd">'+
+    '           <div class="content">2222</div>'+
+    '       </div>'+
+    '   </div>'+
+    '</div>'
+  ).appendTo(document.body);
+
+ var $popup1 = $('<div id="popup1" class="popup">'+
+    '   <div class="popup-dialog">'+
+    '       <div class="popup-hd">'+
+    '           <span class="close"><i>X</i></span>'+
+    '       </div>'+
+    '       <div class="popup-bd">'+
+    '           <div class="content">111</div>'+
+    '       </div>'+
+    '   </div>'+
+    '</div>'
+  ).appendTo(document.body);
 
   $.ui.run('ui.dropdown');
 
-
-  // var dropdown = $($dropdown.filter('.dropdown')[0]).data('ui.dropdown');
-  // dropdown.setOptions({
-  //   onSelect: function (evt, data) {
-  //     console.log(data);
-  //   }
-  // });
+  $popup1.popup();
+  $popup2.popup();
 
 });
