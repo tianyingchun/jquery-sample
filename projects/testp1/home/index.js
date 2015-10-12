@@ -2,7 +2,7 @@ require('../stylesheets/testp1.less');
 
 var core = require('../../../shared/jquery/components/core');
 var Dropdown = require('../../../shared/jquery/components/dropdown');
-var dialog = require('../../../shared/jquery/components/dialog');
+var Popup = require('../../../shared/jquery/components/dialog');
 
 $(function () {
   // run module2.
@@ -56,7 +56,7 @@ $(function () {
     '</div>'
   ).appendTo(document.body);
 
- var $popup1 = $('<div id="popup1" class="popup">'+
+ var $popup1 = $('<div id="popup1" data-popup=\'{"modalClose": true, "domReadyShow": false}\' class="popup">'+
     '   <div class="popup-dialog">'+
     '       <div class="popup-hd">'+
     '           <span class="close"><i>X</i></span>'+
@@ -68,9 +68,6 @@ $(function () {
     '</div>'
   ).appendTo(document.body);
 
-  $.ui.run('ui.dropdown');
-
-  $popup1.popup();
-  $popup2.popup();
+  $.ui.run(['ui.dropdown', 'ui.popup']);
 
 });
