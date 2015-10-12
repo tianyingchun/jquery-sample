@@ -3,7 +3,8 @@ require('../stylesheets/testp1.less');
 var core = require('../../../shared/jquery/components/core');
 var Dropdown = require('../../../shared/jquery/components/dropdown');
 var Popup = require('../../../shared/jquery/components/dialog');
-
+var Header = require('../../../shared/widgets/header');
+var { signals } = require('../../../shared/jquery/utils')
 $(function () {
   // run module2.
   var $dropdown = $(
@@ -70,4 +71,7 @@ $(function () {
 
   $.ui.run(['ui.dropdown', 'ui.popup']);
 
+  signals.get('header').subscribe(function (message) {
+    console.log('signals: message: ', message);
+  })
 });
