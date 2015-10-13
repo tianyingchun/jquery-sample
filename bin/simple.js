@@ -14,6 +14,12 @@ app.use(favicon(path.join(__dirname, '../public/favicon.ico')));
 // Use this middleware to serve up static files built into the dist directory
 app.use("/public", cors(), express.static(path.join(__dirname, '../public')));
 app.use("/shared", cors(), express.static(path.join(__dirname, '../shared')));
+// for testing.
+app.use("/test", function (req, res) {
+  res.send({
+    success: 'ok'
+  });
+});
 app.use("/", function(req, res) {
     // Resolve current server rendering params.
   var configParams = getRenderParams(req, NODE_ENV);

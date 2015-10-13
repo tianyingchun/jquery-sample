@@ -1,6 +1,5 @@
 // require header.less
 require('./header.less');
-var { signals } = require('../../jquery/utils');
 var { UI, createWidget, WidgetClass } = require('../../jquery/components/core');
 var componentName = 'header';
 var Header = WidgetClass.extend({
@@ -9,7 +8,7 @@ var Header = WidgetClass.extend({
 
   initialize: function () {
     console.log('header widget initialize...');
-    signals.get('header').broadcast('header initialize....');
+    this.broadcast('header initialize....');
   },
   destroy: function () {
     this._destroy();

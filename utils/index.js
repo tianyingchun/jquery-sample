@@ -1,5 +1,7 @@
-var path = require("./path");
+var amount = require('./amount');
+var WebApi = require('./WebApi');
+
 module.exports = {
-  // path util.
-  path: path
+  amount: amount,
+  WebApi: WebApi
 };

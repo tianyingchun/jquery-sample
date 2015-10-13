@@ -4,7 +4,9 @@ var core = require('../../../shared/jquery/components/core');
 var Dropdown = require('../../../shared/jquery/components/dropdown');
 var Popup = require('../../../shared/jquery/components/dialog');
 var Header = require('../../../shared/widgets/header');
-var { signals } = require('../../../shared/jquery/utils')
+var { signals } = require('../../../shared/jquery/utils');
+var TestApi = require('../services/TestApi');
+
 $(function () {
   // run module2.
   var $dropdown = $(
@@ -71,6 +73,18 @@ $(function () {
 
   $.ui.run(['ui.dropdown', 'ui.popup']);
 
+  var api = new TestApi();
+  setTimeout(function () {
+
+
+  api.fetchTestData().then(function (result) {
+    console.log('fetchTestData', result);
+  }).fail(function (err) {
+    console.log('fetchTestData err', err);
+
+  })
+
+}, 2000)
   signals.get('header').subscribe(function (message) {
     console.log('signals: message: ', message);
   })

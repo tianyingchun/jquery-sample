@@ -1,21 +1,76 @@
-import URI from './URI';
-import PATH from '../shared/react/utils/path';
-import STRING from '../shared/react/utils/string';
+var jQuery = require('jquery');
+var { lang, path, extend } = require('../shared/jquery/utils');
 
-class WebAPI {
-  // PATH related utitlites.
-  getApiUrl (path, query) {
-    let finalPath = 'http://localhost:5000';
-    finalPath = STRING.stringFormat('{0}{1}', finalPath, PATH.normalizePath(path));
-    if (query) {
-      let queryPath = [];
-      Object.keys(query).forEach((key) => {
-        queryPath.push(`${key}=${query[key]}`);
-      });
-      return finalPath + '?' + queryPath.join('&').replace(/^&+/, '');
-    } else {
-      return finalPath;
-    }
-  }
+function WebAPI () {
+  // maybe something here.
 }
-export default WebAPI;
+
+function dataParser (result) {
+  console.debug('request success data parser: ', result);
+  return result;
+}
+function parseError(err) {
+  console.debug('request err data parser: ', err);
+  return err;
+}
+jQuery.extend(WebAPI.prototype, {
+
+  /**
+   * Encaosulate jquery ajax request provider, makesure all request return an promise().
+   * @example(
+   *   ....
+   * )
+   * @param  {String} url      the api request with http prefix
+   * @param  {Object} settings the jquery ajax setting follow: http://api.jquery.com/jQuery.ajax/
+   * @param  {Function} yourDto your bisuness customized dto
+   * @return {Promise.then(cb).fail(cb)}
+   */
+  request: function (url, settings, yourDto) {
+    if (!settings.dataType) settings.dataType = 'json';
+
+    if ((settings.method || 'GET').toUpperCase() != 'GET') {
+      settings.processData = false;
+    }
+    var deferred = $.Deferred();
+
+    jQuery.ajax(url, settings)
+     .done(this.bind(function (result) {
+       result = dataParser.call(this, result);
+       result = $.isFunction(yourDto) ? yourDto.call(this, result) : result;
+       deferred.resolve(result);
+     }))
+     .fail(this.bind(function (err) {
+       deferred.reject(parseError(err));
+     }))
+     .always(function () {
+       //nothing.
+     });
+
+    return deferred.promise();
+  },
+   // @public
+  // bind callback to specificed context.
+  bind: function (fn, context /*, additionalArguments */ ) {
+    var args = [fn, context || this].concat(Array.prototype.slice.call(arguments, 2));
+    return jQuery.proxy.apply(jQuery.proxy, args);
+  },
+
+  getApiUrl: function (yourPath, query) {
+    return path.getUrl(yourPath, query);
+  },
+
+  getProject2RootUrl: function (yourPath, query) {
+    return this.getApiUrl(path.normalizePath('/workspace', yourPath), query);
+  },
+
+  getProject3RootUrl: function (yourPath, query) {
+    return this.getApiUrl(path.normalizePath('/document', yourPath), query);
+  }
+});
+
+// extend static method `extend`
+jQuery.extend(WebAPI, {
+  extend: extend
+});
+
+module.exports = WebAPI;
