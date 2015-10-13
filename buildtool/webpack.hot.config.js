@@ -7,7 +7,7 @@ module.exports = function () {
 
   // Add source mapping for hot server.
   // use sourcemap, convenient for debugging.
-  config.devtool = 'eval-source-map';
+  config.devtool = 'source-map';
 
   // Provider special entry point in development phase,
   // it will be able to get live reloads when doing changes to our source code.
