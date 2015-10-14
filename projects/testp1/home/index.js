@@ -2,7 +2,7 @@ require('../stylesheets/testp1.less');
 
 var core = require('../../../shared/jquery/components/core');
 var Dropdown = require('../../../shared/jquery/components/dropdown');
-var Popup = require('../../../shared/jquery/components/dialog');
+var { Popup, alert } = require('../../../shared/jquery/components/dialog');
 var Header = require('../../../shared/widgets/header');
 var { signals } = require('../../../shared/jquery/utils');
 var TestApi = require('../services/TestApi');
@@ -35,6 +35,7 @@ $(function () {
     '</div>'
   ).appendTo(document.body);
   $(
+    '<div class="testing">testing....</div><button class="testingpopup"> Testing Popup </button>'+
     '<p>sssss</p><p>sssss</p><p>sssss</p><p>sssss</p>'+
     '<p>sssss</p><p>sssss</p><p>sssss</p><p>sssss</p>'+
     '<p>sssss</p><p>sssss</p><p>sssss</p><p>sssss</p>'+
@@ -73,10 +74,28 @@ $(function () {
 
   $.ui.run(['ui.dropdown', 'ui.popup']);
 
+
+  $('.testingpopup').on('click', function () {
+    // new Popup($('.testing'), {}).show();
+    var instance = alert({
+      onOpen: function () {
+        console.log('onOpen');
+      },
+      onClose: function () {
+        console.log('onClose');
+
+      },
+      onActionClicked: function (data) {
+        console.log('onActionClicked',data);
+        this.close();
+      },
+      modalClose: false,
+    });
+  })
+
   var api = new TestApi();
+
   setTimeout(function () {
-
-
   api.fetchTestData().then(function (result) {
     console.log('fetchTestData', result);
   }).fail(function (err) {
