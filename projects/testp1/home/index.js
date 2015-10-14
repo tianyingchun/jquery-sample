@@ -2,7 +2,7 @@ require('../stylesheets/testp1.less');
 
 var core = require('../../../shared/jquery/components/core');
 var Dropdown = require('../../../shared/jquery/components/dropdown');
-var { Popup, alert } = require('../../../shared/jquery/components/dialog');
+var { Popup, dialog } = require('../../../shared/jquery/components/dialog');
 var Header = require('../../../shared/widgets/header');
 var { signals } = require('../../../shared/jquery/utils');
 var TestApi = require('../services/TestApi');
@@ -77,19 +77,21 @@ $(function () {
 
   $('.testingpopup').on('click', function () {
     // new Popup($('.testing'), {}).show();
-    var instance = alert({
-      onOpen: function () {
-        console.log('onOpen');
+    // var instance = dialog.alert({
+    //   onActionClicked: function (data) {
+    //     console.log('onActionClicked',data);
+    //     this.close();
+    //   }
+    // });
+    var instanceConfirm = dialog.confirm({
+      onConfirm: function (data) {
+        console.log('confirm',data);
+        // this.close();
       },
-      onClose: function () {
-        console.log('onClose');
-
-      },
-      onActionClicked: function (data) {
-        console.log('onActionClicked',data);
+      onCancel: function (data) {
+        console.log('cancel',data);
         this.close();
-      },
-      modalClose: false,
+      }
     });
   })
 
