@@ -4,6 +4,3 @@
 [submodule "shared/less"]
 	path = shared/less
 	url = https://github.com/tianyingchun/less.git
-[submodule "bin/thymol"]
-	path = bin/thymol
-	url = https://github.com/tianyingchun/thymol-node-server.git
