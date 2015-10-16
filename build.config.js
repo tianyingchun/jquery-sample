@@ -27,6 +27,18 @@ module.exports = {
     }
   },
   projects: {
+    docs: {
+      _metaInfo: {
+        version: ''
+      },
+      home: {
+        match: /^\/docs(\/)?/,
+        // entry point, must be string.
+        entry: './projects/docs/home/index.js',
+        jsBundles: ['http://localhost:4001/public/vendors/jquery/jquery.js${version}', 'docs/home/bundle.js${version}'],
+        cssBundles: ['http://localhost:4001/shared/less/public/themes/tongcheng-pc/common.css', 'docs/home/bundle.css${version}']
+      }
+    },
     // ${projectName}, project layers, Note for webpack optimze suggestion,
     // if we have some submodule in projecet (multi) page, we need to attach submodule
     // into this project as multi entry points.
