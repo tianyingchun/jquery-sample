@@ -51,6 +51,7 @@ $(function () {
   ).appendTo(document.body);
   $.ui.run(['ui.dropdown', 'ui.popup']);
 
+  new Popup($popup2 , {"modalClose": true, "domReadyShow": true})
 
   $('.testingpopup').on('click', function () {
     var $button = $(this);
@@ -68,6 +69,7 @@ $(function () {
       }
     });
   })
+
 
   var api = new TestApi();
 

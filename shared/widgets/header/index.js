@@ -23,7 +23,7 @@ UI.ready(function (context) {
 
   // don some thing.
 
-}, Header.getPluginInstanceName(componentName));
+}, Header.getInstanceName(componentName));
 
 
 module.exports = Header;
