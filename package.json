@@ -17,6 +17,7 @@
     "debug": "^2.2.0",
     "exec-time": "0.0.3",
     "express": "^4.13.3",
+    "highlight.js": "^8.8.0",
     "html-minifier": "^0.7.2",
     "jquery": "^1.11.3",
     "location-bar": "^2.1.0",

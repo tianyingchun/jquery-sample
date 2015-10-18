@@ -15,7 +15,7 @@ var tpl =
   '    <div class="layout-topnav">' +
   '      <header class="topbar topbar-inverse">' +
   '        <h1 class="topbar-brand">' +
-  '            <a href="/docs">The Component Sample</a>' +
+  '            <a href="/docs">The Jquery Components</a>' +
   '            <span class="badge badge-warning"></span>' +
   '        </h1>' +
   '      </header>' +
@@ -25,8 +25,8 @@ var tpl =
   '       <div id="left-dock" class="nav-left-dock col-sm-2">' +
   '         dock menus' +
   '       </div>' +
-  '       <div class="right-main col-sm-10">' +
-  '       right main' +
+  '       <div id="right-main" class="right-main col-sm-10">' +
+  '         <div class="doc-content"></div>' +
   '       </div>' +
   '     </div>'
 '    </div>'
@@ -110,10 +110,13 @@ var Layout = WidgetClass.extend({
         return false;
       }
     });
+    this.resetLeftDockSize();
   },
 
   resetLeftDockSize: function () {
-    var height = $(window).height();
+    var wHeight = $(window).height();
+    var dHeight = $(document).height();
+    var height = wHeight > dHeight ? wHeight : dHeight;
     $("#left-dock").css('height', (height-50)+'px');
   },
 
