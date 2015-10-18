@@ -1,15 +1,29 @@
 require('../stylesheets/doc.less');
 
-var {
-  Dropdown, Popup
-} = require('../../../shared/jquery/components');
+var { UI } = require('../../../shared/jquery/components/core');
+var { Dropdown, Popup } = require('../../../shared/jquery/components');
+var { signals } = require('../../../shared/jquery/utils');
+// var Header = require('../../../shared/widgets/header');
+var Layout = require('../../../shared/widgets/layout');
 var dialog = Popup.dialog;
 
-var Header = require('../../../shared/widgets/header');
-var {
-  signals
-} = require('../../../shared/jquery/utils');
+function showComponentDemo(eventType, componentName) {
+  console.debug('component name is `%s`', componentName);
+  switch(componentName) {
+    case '':
+    break;
+  }
+}
 
-$(function () {
-
+signals.get('routes').subscribe(function (events) {
+  var { type, data } = events;
+  showComponentDemo(type, data);
 });
+
+
+
+UI.ready(function () {
+
+  Layout.render();
+
+}, Layout.getInstanceName());

@@ -53,7 +53,7 @@ app.use("/", function(req, res) {
     stylesHtml +
     '</head>' +
     '  <body>' +
-    '    <div id="react-view"></div>' +
+    '    <div id="doc-view"></div>' +
     scriptsHtml +
     '  </body>' +
     '</html>';
