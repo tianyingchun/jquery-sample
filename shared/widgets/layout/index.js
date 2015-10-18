@@ -38,8 +38,8 @@ var leftDock =
   '  <li class="menu-submenu-inline menu-submenu-open menu-submenu">' +
   '    <div class="menu-submenu-title">' +
   '      <span>' +
-  '        <span>布局相关</span>' +
-  '        <span class="menu-title-en">Layout</span>' +
+  '        <span>前期UI组件</span>' +
+  '        <span class="menu-title-en">Draft</span>' +
   '      </span>' +
   '    </div>' +
   '    <ul class="menu menu-inline menu-sub">' +
