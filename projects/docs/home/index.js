@@ -12,15 +12,18 @@ var Layout = require('../../../shared/widgets/layout');
 function showComponentDemo(eventType, componentName) {
   console.debug('component name is `%s`', componentName);
   // clear existed sample code.
-  $(".right-main .doc-content").html('');
-  switch(componentName) {
+  $(".right-main .doc-content").html('<i class="glyph-icon glyph-spinner2 glyph-spin"></i> 加载中...');
+  // simulate loading effection.
+  setTimeout(function () {
+    switch(componentName) {
     case 'dropdown':
       DropdownDemo.render();
       break;
     case 'button':
       ButtonDemo.render();
       break;
-  }
+    }
+  },200);
 }
 
 signals.get('routes').subscribe(function (events) {

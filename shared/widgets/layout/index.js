@@ -60,6 +60,14 @@ var leftDock =
   '        </a>' +
   '      </li>' +
   '      <li class="menu-item" style="padding-left:24px;">' +
+  '        <a class="nav-link" href="/lazyload">' +
+  '          <span>' +
+  '            <span>图片懒加载</span>' +
+  '            <span class="menu-title-en">Lazyload</span>' +
+  '          </span>' +
+  '        </a>' +
+  '      </li>' +
+  '      <li class="menu-item" style="padding-left:24px;">' +
   '        <a class="nav-link" href="/popup">' +
   '          <span>' +
   '            <span>弹窗</span>' +
