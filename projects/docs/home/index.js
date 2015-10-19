@@ -6,7 +6,7 @@ window.hljs = hljs;
 
 var { UI } = require('../../../shared/jquery/components/core');
 var { signals } = require('../../../shared/jquery/utils');
-var { DropdownDemo, ButtonDemo } = require('../../../shared/jquery/components/demo');
+var { DropdownDemo, ButtonDemo, LazyloadDemo } = require('../../../shared/jquery/components/demo');
 var Layout = require('../../../shared/widgets/layout');
 
 function showComponentDemo(eventType, componentName) {
@@ -22,6 +22,8 @@ function showComponentDemo(eventType, componentName) {
     case 'button':
       ButtonDemo.render();
       break;
+    case 'lazyload':
+      LazyloadDemo.render();
     }
   },200);
 }
