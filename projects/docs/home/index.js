@@ -6,25 +6,32 @@ window.hljs = hljs;
 
 var { UI } = require('../../../shared/jquery/components/core');
 var { signals } = require('../../../shared/jquery/utils');
-var { DropdownDemo, ButtonDemo, LazyloadDemo } = require('../../../shared/jquery/components/demo');
+var { DropdownDemo, ButtonDemo, LazyloadDemo, PopupDemo } = require('../../../shared/jquery/components/demo');
 var Layout = require('../../../shared/widgets/layout');
 
 function showComponentDemo(eventType, componentName) {
+  var $layout = $('.wrapper.layout');
+  var layoutInstance = $layout.getInstance();
   console.debug('component name is `%s`', componentName);
   // clear existed sample code.
   $(".right-main .doc-content").html('<i class="glyph-icon glyph-spinner2 glyph-spin"></i> 加载中...');
   // simulate loading effection.
   setTimeout(function () {
     switch(componentName) {
-    case 'dropdown':
-      DropdownDemo.render();
-      break;
-    case 'button':
-      ButtonDemo.render();
-      break;
-    case 'lazyload':
-      LazyloadDemo.render();
+      case 'dropdown':
+        DropdownDemo.render();
+        break;
+      case 'button':
+        ButtonDemo.render();
+        break;
+      case 'lazyload':
+        LazyloadDemo.render();
+        break;
+      case 'popup':
+        PopupDemo.render();
+        break;
     }
+    layoutInstance.resetLeftDockSize();
   },200);
 }
 

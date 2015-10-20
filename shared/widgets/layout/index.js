@@ -160,7 +160,6 @@ Layout.render = function () {
   if (!$wrapper.size()) {
     $wrapper = $(tpl).appendTo($('#doc-view'));
   }
-  console.log($wrapper);
 
   new Layout($wrapper).render();
 };
