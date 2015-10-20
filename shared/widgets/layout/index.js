@@ -75,6 +75,22 @@ var leftDock =
   '          </span>' +
   '        </a>' +
   '      </li>' +
+  '      <li class="menu-item" style="padding-left:24px;">' +
+  '        <a class="nav-link" href="/validate">' +
+  '          <span>' +
+  '            <span>表单验证</span>' +
+  '            <span class="menu-title-en">validate</span>' +
+  '          </span>' +
+  '        </a>' +
+  '      </li>' +
+  '      <li class="menu-item" style="padding-left:24px;">' +
+  '        <a class="nav-link" href="/otp">' +
+  '          <span>' +
+  '            <span>OTP发短信组件</span>' +
+  '            <span class="menu-title-en">OTP</span>' +
+  '          </span>' +
+  '        </a>' +
+  '      </li>' +
   '    </ul>' +
   '  </li>' +
   '</ul>';

@@ -6,7 +6,7 @@ window.hljs = hljs;
 
 var { UI } = require('../../../shared/jquery/components/core');
 var { signals } = require('../../../shared/jquery/utils');
-var { DropdownDemo, ButtonDemo, LazyloadDemo, PopupDemo } = require('../../../shared/jquery/components/demo');
+var { DropdownDemo, ButtonDemo, LazyloadDemo, PopupDemo, ValidateDemo } = require('../../../shared/jquery/components/demo');
 var Layout = require('../../../shared/widgets/layout');
 
 function showComponentDemo(eventType, componentName) {
@@ -29,6 +29,9 @@ function showComponentDemo(eventType, componentName) {
         break;
       case 'popup':
         PopupDemo.render();
+        break;
+      case 'validate':
+        ValidateDemo.render();
         break;
     }
     layoutInstance.resetLeftDockSize();
