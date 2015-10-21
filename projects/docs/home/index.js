@@ -1,6 +1,7 @@
 require('../stylesheets/doc.less');
 require('../stylesheets/hljs.less');
 var hljs = require('highlight.js');
+var { platform } = require('../../../shared/jquery/utils');
 // export global object.
 window.hljs = hljs;
 
@@ -37,6 +38,15 @@ function showComponentDemo(eventType, componentName) {
         OtpDemo.render();
         break;
     }
+
+    var { msie, version } = platform;
+    if (!msie || parseInt(version) >= 9) {
+      // hightlight.
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+    }
+
     layoutInstance.resetLeftDockSize();
   },200);
 }
