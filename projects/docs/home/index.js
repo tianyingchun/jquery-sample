@@ -7,7 +7,7 @@ window.hljs = hljs;
 
 var { UI } = require('../../../shared/jquery/components/core');
 var { signals } = require('../../../shared/jquery/utils');
-var { DropdownDemo, ButtonDemo, LazyloadDemo, PopupDemo, ValidateDemo } = require('../../../shared/jquery/components/demo');
+var { DropdownDemo, ButtonDemo, LazyloadDemo, PopupDemo, ValidateDemo, OtpDemo } = require('../../../shared/jquery/components/demo');
 var Layout = require('../../../shared/widgets/layout');
 
 function showComponentDemo(eventType, componentName) {
