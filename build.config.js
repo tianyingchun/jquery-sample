@@ -38,7 +38,7 @@ module.exports = {
         match: /^\/docs(\/)?/,
         // entry point, must be string.
         entry: './projects/docs/home/index.js',
-        jsBundles: ['http://localhost:4001/public/vendors/jquery/jquery.js${version}', 'docs/home/bundle.js${version}'],
+        jsBundles: ['http://localhost:4001/public/vendors/esshim/es5-shim.min.js', 'http://localhost:4001/public/vendors/jquery/jquery.min.js', 'docs/home/bundle.js${version}'],
         cssBundles: ['http://localhost:4001/shared/less/public/common.css', 'docs/home/bundle.css${version}']
       }
     },

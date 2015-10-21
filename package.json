@@ -15,6 +15,7 @@
     "compression": "^1.5.2",
     "cors": "^2.7.1",
     "debug": "^2.2.0",
+    "es5-shim": "^4.1.15",
     "exec-time": "0.0.3",
     "express": "^4.13.3",
     "highlight.js": "^8.8.0",

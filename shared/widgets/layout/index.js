@@ -139,7 +139,7 @@ var Layout = WidgetClass.extend({
 
   resetLeftDockSize: function () {
     var wHeight = $(window).height();
-    var dHeight = $(document).height();
+    var dHeight = $('.doc-content').height();
     var height = wHeight > dHeight ? wHeight : dHeight;
     $("#left-dock").css('height', (height-50)+'px');
   },

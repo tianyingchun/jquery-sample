@@ -33,6 +33,9 @@ function showComponentDemo(eventType, componentName) {
       case 'validate':
         ValidateDemo.render();
         break;
+      case 'otp':
+        OtpDemo.render();
+        break;
     }
     layoutInstance.resetLeftDockSize();
   },200);

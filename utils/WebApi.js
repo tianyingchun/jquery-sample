@@ -1,4 +1,4 @@
-var jQuery = require('jquery');
+var $ = require('jquery');
 var { lang, path, extend } = require('../shared/jquery/utils');
 
 function WebAPI () {
@@ -13,7 +13,7 @@ function parseError(err) {
   console.debug('request err data parser: ', err);
   return err;
 }
-jQuery.extend(WebAPI.prototype, {
+$.extend(WebAPI.prototype, {
 
   /**
    * Encaosulate jquery ajax request provider, makesure all request return an promise().
@@ -33,7 +33,7 @@ jQuery.extend(WebAPI.prototype, {
     }
     var deferred = $.Deferred();
 
-    jQuery.ajax(url, settings)
+    $.ajax(url, settings)
      .done(this.bind(function (result) {
        result = dataParser.call(this, result);
        result = $.isFunction(yourDto) ? yourDto.call(this, result) : result;
@@ -52,7 +52,7 @@ jQuery.extend(WebAPI.prototype, {
   // bind callback to specificed context.
   bind: function (fn, context /*, additionalArguments */ ) {
     var args = [fn, context || this].concat(Array.prototype.slice.call(arguments, 2));
-    return jQuery.proxy.apply(jQuery.proxy, args);
+    return $.proxy.apply($.proxy, args);
   },
 
   getApiUrl: function (yourPath, query) {
@@ -69,7 +69,7 @@ jQuery.extend(WebAPI.prototype, {
 });
 
 // extend static method `extend`
-jQuery.extend(WebAPI, {
+$.extend(WebAPI, {
   extend: extend
 });
 
