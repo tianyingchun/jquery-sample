@@ -16,9 +16,11 @@ app.use("/public", cors(), express.static(path.join(__dirname, '../public')));
 app.use("/shared", cors(), express.static(path.join(__dirname, '../shared')));
 // for testing.
 app.use("/test", function (req, res) {
-  res.send({
-    success: 'ok'
-  });
+  setTimeout(function () {
+    res.send({
+      success: 'ok'
+    });
+  }, 2000);
 });
 app.use("/", function(req, res) {
     // Resolve current server rendering params.

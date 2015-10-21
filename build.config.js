@@ -32,6 +32,9 @@ module.exports = {
         version: ''
       },
       home: {
+        _metaInfo: {
+          version: ''
+        },
         match: /^\/docs(\/)?/,
         // entry point, must be string.
         entry: './projects/docs/home/index.js',
