@@ -22,6 +22,12 @@ app.use("/test", function (req, res) {
     });
   }, 2000);
 });
+app.use("/otp/changeSendOtp", function (req, res) {
+  res.send({
+    code: '000000'
+  });
+});
+
 app.use("/", function(req, res) {
     // Resolve current server rendering params.
   var configParams = getRenderParams(req, NODE_ENV);
