@@ -91,6 +91,22 @@ var leftDock =
   '          </span>' +
   '        </a>' +
   '      </li>' +
+  '      <li class="menu-item" style="padding-left:24px;">' +
+  '        <a class="nav-link" href="/pagination">' +
+  '          <span>' +
+  '            <span>分页组件</span>' +
+  '            <span class="menu-title-en">Pagination</span>' +
+  '          </span>' +
+  '        </a>' +
+  '      </li>' +
+  '      <li class="menu-item" style="padding-left:24px;">' +
+  '        <a class="nav-link" href="/timeline">' +
+  '          <span>' +
+  '            <span>时间轴(PureCss)</span>' +
+  '            <span class="menu-title-en">Timeline</span>' +
+  '          </span>' +
+  '        </a>' +
+  '      </li>' +
   '    </ul>' +
   '  </li>' +
   '</ul>';
@@ -138,10 +154,10 @@ var Layout = WidgetClass.extend({
   },
 
   resetLeftDockSize: function () {
-    var wHeight = $(window).height();
+    var wHeight = $(window).height()-50;
     var dHeight = $('.doc-content').height();
     var height = wHeight > dHeight ? wHeight : dHeight;
-    $("#left-dock").css('height', (height-50)+'px');
+    $("#left-dock").css('height', (height)+'px');
   },
 
   routeChange: function ($link) {
