@@ -115,6 +115,14 @@ var leftDock =
   '          </span>' +
   '        </a>' +
   '      </li>' +
+  '      <li class="menu-item" style="padding-left:24px;">' +
+  '        <a class="nav-link" href="/collapse">' +
+  '          <span>' +
+  '            <span>折叠面板</span>' +
+  '            <span class="menu-title-en">collapse</span>' +
+  '          </span>' +
+  '        </a>' +
+  '      </li>' +
   '    </ul>' +
   '  </li>' +
   '</ul>';
