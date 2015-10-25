@@ -7,7 +7,7 @@ window.hljs = hljs;
 
 var { UI } = require('../../../shared/jquery/components/core');
 var { signals } = require('../../../shared/jquery/utils');
-var { DropdownDemo, ButtonDemo, LazyloadDemo, PopupDemo, ValidateDemo, OtpDemo, PaginationDemo, TimelineDemo, SliderDemo, CollapseDemo } = require('../../../shared/jquery/components/demo');
+var { DropdownDemo, ButtonDemo, LazyloadDemo, PopupDemo, ValidateDemo, OtpDemo, PaginationDemo, TimelineDemo, SliderDemo, CollapseDemo, TabsDemo } = require('../../../shared/jquery/components/demo');
 var Layout = require('../../../shared/widgets/layout');
 
 function showComponentDemo(eventType, componentName) {
@@ -48,6 +48,9 @@ function showComponentDemo(eventType, componentName) {
         break;
       case 'collapse':
         CollapseDemo.render();
+        break;
+      case 'tabs':
+        TabsDemo.render();
         break;
     }
 

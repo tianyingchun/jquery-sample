@@ -123,6 +123,14 @@ var leftDock =
   '          </span>' +
   '        </a>' +
   '      </li>' +
+  '      <li class="menu-item" style="padding-left:24px;">' +
+  '        <a class="nav-link" href="/tabs">' +
+  '          <span>' +
+  '            <span>栏目切换</span>' +
+  '            <span class="menu-title-en">tabs</span>' +
+  '          </span>' +
+  '        </a>' +
+  '      </li>' +
   '    </ul>' +
   '  </li>' +
   '</ul>';
