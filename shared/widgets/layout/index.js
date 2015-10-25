@@ -102,8 +102,16 @@ var leftDock =
   '      <li class="menu-item" style="padding-left:24px;">' +
   '        <a class="nav-link" href="/timeline">' +
   '          <span>' +
-  '            <span>时间轴(PureCss)</span>' +
+  '            <span>时间轴</span>' +
   '            <span class="menu-title-en">Timeline</span>' +
+  '          </span>' +
+  '        </a>' +
+  '      </li>' +
+  '      <li class="menu-item" style="padding-left:24px;">' +
+  '        <a class="nav-link" href="/slider">' +
+  '          <span>' +
+  '            <span>图片轮播</span>' +
+  '            <span class="menu-title-en">slider</span>' +
   '          </span>' +
   '        </a>' +
   '      </li>' +
