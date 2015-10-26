@@ -21,6 +21,7 @@ module.exports = function (grunt) {
             PORT: 4001,
             // for development, isomorphic server rendering
             NODE_ENV: '',
+            DEBUG: 'app:*,',
             DEBUG_COLORS: true
           },
           ext: 'js,jsx,html,ejs'
