@@ -3,6 +3,9 @@ var { UI, createWidget, WidgetClass } = require('../../jquery/components/core');
 var { signals } = require('../../jquery/utils');
 var componentName = 'layout';
 var locationBar = new LocationBar();
+var platform = require('../../jquery/utils/platform');
+var { msie, version } = platform;
+var path = require('../../jquery/utils/path');
 
 locationBar.onChange(function (path) {
   // console.log("the current url is", path);
@@ -44,7 +47,7 @@ var leftDock =
   '    </div>' +
   '    <ul class="menu menu-inline menu-sub">' +
   '      <li class="menu-item" style="padding-left:24px;">' +
-  '        <a class="nav-link" href="/dropdown">' +
+  '        <a class="nav-link" data-href="/dropdown" href="/dropdown">' +
   '          <span>' +
   '            <span>下拉框</span>' +
   '            <span class="menu-title-en">Dropdown</span>' +
@@ -52,7 +55,7 @@ var leftDock =
   '        </a>' +
   '      </li>' +
   '      <li class="menu-item" style="padding-left:24px;">' +
-  '        <a class="nav-link" href="/button">' +
+  '        <a class="nav-link" data-href="/button" href="/button">' +
   '          <span>' +
   '            <span>按钮</span>' +
   '            <span class="menu-title-en">Button</span>' +
@@ -60,7 +63,7 @@ var leftDock =
   '        </a>' +
   '      </li>' +
   '      <li class="menu-item" style="padding-left:24px;">' +
-  '        <a class="nav-link" href="/lazyload">' +
+  '        <a class="nav-link" data-href="/lazyload" href="/lazyload">' +
   '          <span>' +
   '            <span>图片懒加载</span>' +
   '            <span class="menu-title-en">Lazyload</span>' +
@@ -68,7 +71,7 @@ var leftDock =
   '        </a>' +
   '      </li>' +
   '      <li class="menu-item" style="padding-left:24px;">' +
-  '        <a class="nav-link" href="/popup">' +
+  '        <a class="nav-link" data-href="/popup" href="/popup">' +
   '          <span>' +
   '            <span>弹窗</span>' +
   '            <span class="menu-title-en">popup</span>' +
@@ -76,7 +79,7 @@ var leftDock =
   '        </a>' +
   '      </li>' +
   '      <li class="menu-item" style="padding-left:24px;">' +
-  '        <a class="nav-link" href="/validate">' +
+  '        <a class="nav-link" data-href="/validate" href="/validate">' +
   '          <span>' +
   '            <span>表单验证</span>' +
   '            <span class="menu-title-en">validate</span>' +
@@ -84,7 +87,7 @@ var leftDock =
   '        </a>' +
   '      </li>' +
   '      <li class="menu-item" style="padding-left:24px;">' +
-  '        <a class="nav-link" href="/otp">' +
+  '        <a class="nav-link" data-href="/otp" href="/otp">' +
   '          <span>' +
   '            <span>OTP发短信组件</span>' +
   '            <span class="menu-title-en">OTP</span>' +
@@ -92,7 +95,7 @@ var leftDock =
   '        </a>' +
   '      </li>' +
   '      <li class="menu-item" style="padding-left:24px;">' +
-  '        <a class="nav-link" href="/pagination">' +
+  '        <a class="nav-link" data-href="/pagination" href="/pagination">' +
   '          <span>' +
   '            <span>分页组件</span>' +
   '            <span class="menu-title-en">Pagination</span>' +
@@ -100,7 +103,7 @@ var leftDock =
   '        </a>' +
   '      </li>' +
   '      <li class="menu-item" style="padding-left:24px;">' +
-  '        <a class="nav-link" href="/timeline">' +
+  '        <a class="nav-link" data-href="/timeline" href="/timeline">' +
   '          <span>' +
   '            <span>时间轴</span>' +
   '            <span class="menu-title-en">Timeline</span>' +
@@ -108,7 +111,7 @@ var leftDock =
   '        </a>' +
   '      </li>' +
   '      <li class="menu-item" style="padding-left:24px;">' +
-  '        <a class="nav-link" href="/slider">' +
+  '        <a class="nav-link" data-href="/slider" href="/slider">' +
   '          <span>' +
   '            <span>图片轮播</span>' +
   '            <span class="menu-title-en">slider</span>' +
@@ -116,7 +119,7 @@ var leftDock =
   '        </a>' +
   '      </li>' +
   '      <li class="menu-item" style="padding-left:24px;">' +
-  '        <a class="nav-link" href="/collapse">' +
+  '        <a class="nav-link" data-href="/collapse" href="/collapse">' +
   '          <span>' +
   '            <span>折叠面板</span>' +
   '            <span class="menu-title-en">collapse</span>' +
@@ -124,7 +127,7 @@ var leftDock =
   '        </a>' +
   '      </li>' +
   '      <li class="menu-item" style="padding-left:24px;">' +
-  '        <a class="nav-link" href="/tabs">' +
+  '        <a class="nav-link" data-href="/tabs" href="/tabs">' +
   '          <span>' +
   '            <span>栏目切换</span>' +
   '            <span class="menu-title-en">tabs</span>' +
@@ -185,8 +188,12 @@ var Layout = WidgetClass.extend({
   },
 
   routeChange: function ($link) {
-    var href = $link.attr("href");
-    locationBar.update(href, {trigger: true});
+    var href = $link.data("href");
+    if (msie && parseInt(version)<= 9) {
+      location.href = path.getUrl(path.normalizePath(locationBar.root, href));
+    } else {
+      locationBar.update(href, {trigger: true});
+    }
   },
 
   render: function () {
