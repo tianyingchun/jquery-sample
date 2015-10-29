@@ -111,6 +111,14 @@ var leftDock =
   '        </a>' +
   '      </li>' +
   '      <li class="menu-item" style="padding-left:24px;">' +
+  '        <a class="nav-link" data-href="/steps" href="/steps">' +
+  '          <span>' +
+  '            <span>步骤条</span>' +
+  '            <span class="menu-title-en">Steps</span>' +
+  '          </span>' +
+  '        </a>' +
+  '      </li>' +
+  '      <li class="menu-item" style="padding-left:24px;">' +
   '        <a class="nav-link" data-href="/slider" href="/slider">' +
   '          <span>' +
   '            <span>图片轮播</span>' +
