@@ -3,6 +3,8 @@ var { lang, path, extend } = require('../shared/jquery/utils');
 
 function WebAPI () {
   // maybe something here.
+  // the short cut supper reference to parent prototype.
+  this.super = this.constructor.__super__;
 }
 
 function dataParser (result) {
