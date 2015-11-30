@@ -17,9 +17,11 @@ var OtpCtrl = {
     res.send(data);
   },
   sendOtp: function (req, res, next) {
-    res.send({
-      code: '000000'
-    });
+    setTimeout(function() {
+      res.send({
+        code: '000000'
+      });
+    }, 5000);
   }
 };
 
