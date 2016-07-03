@@ -7,7 +7,7 @@ window.hljs = hljs;
 
 var { UI } = require('../../../shared/jquery/components/core');
 var { signals } = require('../../../shared/jquery/utils');
-var { DropdownDemo, ButtonDemo, LazyloadDemo, PopupDemo, ValidateDemo, OtpDemo, PaginationDemo, TimelineDemo, StepsDemo, SliderDemo, CollapseDemo, TabsDemo } = require('../../../shared/jquery/components/demo');
+var { DropdownDemo, ButtonDemo, LazyloadDemo, PopupDemo, ValidateDemo, OtpDemo, PaginationDemo, TimelineDemo, StepsDemo, SliderDemo, CollapseDemo, TabsDemo, CitySelectDemo } = require('../../../shared/jquery/components/demo');
 var Layout = require('../../../shared/widgets/layout');
 
 function showComponentDemo(eventType, componentName) {
@@ -18,7 +18,7 @@ function showComponentDemo(eventType, componentName) {
   $(".right-main .doc-content").html('<i class="glyph-icon glyph-spinner2 glyph-spin"></i> 加载中...');
   // simulate loading effection.
   setTimeout(function () {
-    switch(componentName) {
+    switch (componentName) {
       case 'dropdown':
         DropdownDemo.render();
         break;
@@ -55,18 +55,21 @@ function showComponentDemo(eventType, componentName) {
       case 'tabs':
         TabsDemo.render();
         break;
+      case 'citySelect':
+        CitySelectDemo.render();
+        break;
     }
 
     var { msie, version } = platform;
     if (!msie || parseInt(version) >= 9) {
       // hightlight.
-      $('pre code').each(function(i, block) {
+      $('pre code').each(function (i, block) {
         hljs.highlightBlock(block);
       });
     }
 
     layoutInstance.resetLeftDockSize();
-  },200);
+  }, 200);
 }
 
 signals.get('routes').subscribe(function (events) {

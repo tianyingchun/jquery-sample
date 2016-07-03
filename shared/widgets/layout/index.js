@@ -127,6 +127,14 @@ var leftDock =
   '        </a>' +
   '      </li>' +
   '      <li class="menu-item" style="padding-left:24px;">' +
+  '        <a class="nav-link" data-href="/citySelect" href="/citySelect">' +
+  '          <span>' +
+  '            <span>省市区</span>' +
+  '            <span class="menu-title-en">CitySelect</span>' +
+  '          </span>' +
+  '        </a>' +
+  '      </li>' +
+  '      <li class="menu-item" style="padding-left:24px;">' +
   '        <a class="nav-link" data-href="/collapse" href="/collapse">' +
   '          <span>' +
   '            <span>折叠面板</span>' +
